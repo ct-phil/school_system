@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('classes', function (Blueprint $table) {
-            $table->bigIncrements('class_id');
-            $table->string('class_name');
-            $table->integer('class_code')->unique();
-            $table->softDeletes();
+        Schema::create('batch_details', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('batch_id')->constrained();
+            $table->foreignId('student_id')->constrained('users');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('batch_details');
     }
 };

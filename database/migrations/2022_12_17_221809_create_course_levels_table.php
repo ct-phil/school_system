@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('times', function (Blueprint $table) {
-            $table->bigIncrements('time_id');
-            $table->string('time');
+        Schema::create('course_levels', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('student_id')->constrained('users');
+            $table->string('name');
+            $table->longText('desc');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('times');
+        Schema::dropIfExists('course_levels');
     }
 };

@@ -14,23 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->bigIncrements('student_id');
+            $table->id();
             $table->string('roll_no');
-            $table->string('first_name');
-            $table->string('middle_name');
-            $table->string('surname');
-            $table->string('father_name');
-            $table->string('father_phone');
-            $table->string('mother_name');
-            $table->string('mother_phone');
-            $table->string('sex');
-            $table->string('email')->unique();
+            $table->string('father_name')->nullable();
+            $table->string('father_phone')->nullable();
+            $table->string('mother_name')->nullable();
+            $table->string('mother_phone')->nullable();
+            $table->boolean('sex');
             $table->date('dob');
             $table->longText('address');
             $table->string('nationality');
             $table->date('dateregistered');
-            $table->integer('user_id');
-            $table->integer('class_id');
             $table->string('image')->nullable();
             $table->softDeletes();
             $table->timestamps();

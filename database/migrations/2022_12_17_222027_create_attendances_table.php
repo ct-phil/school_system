@@ -14,12 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('attendances', function (Blueprint $table) {
-            $table->bigIncrements('attendance_id');
-            $table->integer('student_id');
-            $table->integer('class_id');
-            $table->integer('subject_id');
-            $table->integer('teacher_id');
-            $table->tinyInteger('attendance_status')->default(1);
+            $table->id();
+            $table->foreignId('unit_id')->constrained('units');
+            $table->date('date');
+            $table->time('start');
+            $table->time('stop');
             $table->softDeletes();
             $table->timestamps();
         });

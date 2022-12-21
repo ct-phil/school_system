@@ -14,11 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('faculties', function (Blueprint $table) {
-            $table->bigIncrements('faculty_id');
-            $table->string('faculty_name');
-            $table->string('faculty_code')->unique();
-            $table->longText('faculty_description');
-            $table->tinyInteger('faculty_status')->default(1);
+            $table->id();
+            $table->string('name');
+            $table->foreignId('lecturer_id')->constrained('users');
+            $table->string('code')->unique();
+            $table->longText('description');
+            $table->tinyInteger('status')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

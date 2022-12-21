@@ -14,8 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('days', function (Blueprint $table) {
-            $table->bigIncrements('day_id');
-            $table->string('name');
+            $table->id();
+            $table->foreignId('unit_id')->constrained('units');
+            $table->string('day');
+            $table->time('start');
+            $table->time('stop');
             $table->softDeletes();
             $table->timestamps();
         });

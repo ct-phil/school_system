@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('batches', function (Blueprint $table) {
-            $table->bigIncrements('batch_id');
-            $table->string('batch');
+            $table->id();
+            $table->string('name');
             $table->softDeletes();
             $table->timestamps();
         });

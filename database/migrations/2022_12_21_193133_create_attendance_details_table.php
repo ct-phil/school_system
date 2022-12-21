@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('levels', function (Blueprint $table) {
-            $table->bigIncrements('level_id');
-            $table->string('level');
-            $table->integer('course_id')->unsigned();
-            $table->longText('level_description');
-            $table->softDeletes();
+        Schema::create('attendance_details', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('attendance_id')->constrained();
+            $table->foreignId('student_id')->constrained('users');
+            $table->boolean('attend')->default(0);
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('levels');
+        Schema::dropIfExists('attendance_details');
     }
 };

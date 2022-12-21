@@ -14,8 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('academics', function (Blueprint $table) {
-            $table->bigIncrements('academic_id');
-            $table->string('academic_year');
+            $table->id();
+            $table->foreignId('student_id')->constrained('users');
+            $table->year('start');
+            $table->year('end');
+            $table->string('period');
             $table->softDeletes();
             $table->timestamps();
         });
