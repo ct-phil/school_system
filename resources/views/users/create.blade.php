@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 
 @section('content')
@@ -25,9 +25,44 @@
   </div>
 @endif
 
+<div class="card">
+    <div class="card-body">
+       <h5 class="card-title">Vertical Form</h5>
+       <form class="row g-3" method="POST" action="{{ route('users.store') }}">
+        @csrf
+          <div class="col-12"> <label for="name" class="form-label">Name</label> <input type="text" class="form-control" name="name"></div>
+          <div class="col-12"> <label for="email" class="form-label">Email</label> <input type="email" class="form-control" name="email"></div>
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <label for="role" class="form-label">Role</label>
+                {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
+            </div>
+        </div>
+          <div class="col-12">
+            <label for="inputState" class="form-label">Account Type</label> 
+            <select name="account_type" class="form-select">
+               <option value="">Choose...</option>
+               <option value="1">Admin</option>
+               <option value="2">Lecturer</option>
+               <option value="3">Student</option>
+            </select>
+         </div>
+          <div class="col-12"> <label for="password" class="form-label">Password</label> <input type="password" class="form-control" name="password"></div>
+          <div class="col-12"> <label for="inputPassword4" class="form-label">Confrim Password</label> <input type="password" class="form-control" name="confirm-password"></div>
+          <div class="text-center"> <button type="submit" class="btn btn-primary">Submit</button> <button type="reset" class="btn btn-secondary">Reset</button></div>
+       </form>
+    </div>
+ </div>
+
+ {{-- <div class="col-md-8">
+    <select id="inputState" class="form-select">
+       <option selected="" placeholder="Email"></option>
+       <option>...</option>
+    </select>
+ </div> --}}
 
 
-{!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
+{{-- {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
@@ -63,7 +98,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </div>
-{!! Form::close() !!}
+{!! Form::close() !!} --}}
 
 
 @endsection

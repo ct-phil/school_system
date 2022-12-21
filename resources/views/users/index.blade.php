@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 
 @section('content')
@@ -26,6 +26,7 @@
    <th>No</th>
    <th>Name</th>
    <th>Email</th>
+   <th>Account type</th>
    <th>Roles</th>
    <th width="280px">Action</th>
  </tr>
@@ -34,6 +35,7 @@
     <td>{{ ++$i }}</td>
     <td>{{ $user->name }}</td>
     <td>{{ $user->email }}</td>
+    <td>{{ $user->account_type }}</td>
     <td>
       @if(!empty($user->getRoleNames()))
         @foreach($user->getRoleNames() as $v)

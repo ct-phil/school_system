@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\StudentsModel;
 
-class StudentsController extends Controller
+class FacultyController extends Controller
 {
     //
 }

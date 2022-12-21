@@ -14,6 +14,7 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
+        app() [\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
         $permissions = [
            'role-list',
            'role-create',
@@ -22,11 +23,12 @@ class PermissionTableSeeder extends Seeder
            'product-list',
            'product-create',
            'product-edit',
-           'product-delete'
+           'product-delete',
+           'create-course'
         ];
      
         foreach ($permissions as $permission) {
-             Permission::create(['name' => $permission]);
+             Permission::findOrCreate($permission);
         }
     }
 }
