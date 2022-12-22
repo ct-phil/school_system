@@ -13,9 +13,9 @@
                 @endcan
             </div>
         </div> --}}\
-        <div class="pull-right">
+        {{-- <div class="pull-right">
             <a class="btn btn-success" href="{{ route('students.create') }}"> Create New Student</a>
-        </div>
+        </div> --}}
     </div>
 
 
@@ -25,8 +25,42 @@
         </div>
     @endif
 
+    <div class="card">
+        <div class="card-body">
+           <h5 class="card-title">Students</h5>
+           <table class="table table-striped">
+              <thead>
+                 <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Roll No</th>
+                    <th scope="col">Date Registered</th>
+                    <th scope="col">Action</th>
+                 </tr>
+              </thead>
+              <tbody>
+                @foreach($students as $student)
+                 <tr>
+                    <th scope="row">{{ ++$i }}</th>
+                    <td>{{ $student->roll_no }}</td>
+                    <td>{{ $student->dateregistered }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ route('students.show',$student->id) }}">Show</a>
+                        <a class="btn btn-primary" href="{{ route('students.edit',$student->id) }}">Edit</a>
+                         {!! Form::open(['method' => 'DELETE','route' => ['students.destroy', $student->id],'style'=>'display:inline']) !!}
+                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                         {!! Form::close() !!}
+                     </td>
+                 </tr>
+                @endforeach
+              </tbody>
+           </table>
+        </div>
+     </div>
 
-    <table class="table table-bordered">
+  
+
+
+    {{-- <table class="table table-bordered">
         <tr>
             <th>No</th>
             <th>Course Name</th>
@@ -60,9 +94,9 @@
 	    </tr>
 	    @endforeach
     </table>
+ --}}
 
-
-    {!! $students->links() !!}
+    {{-- {!! $students->links() !!} --}}
 
 
 

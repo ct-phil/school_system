@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('code')->unique();
             $table->longText('description');
-            $table->tinyInteger('status')->default(1);
+            // $table->string('status');
             $table->softDeletes();
             $table->timestamps();
         });

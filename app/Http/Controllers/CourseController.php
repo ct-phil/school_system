@@ -51,10 +51,10 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'course_name' => 'required',
-            'course_code' => 'required',
+            'name' => 'required',
+            'code' => 'required',
             'description' => 'required',
-            'course_status' => 'required',
+            // 'status' => 'required',
         ]);
     
         Course::create($request->all());
@@ -69,7 +69,7 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $courses)
+    public function show(Course $course)
     {
         return view('courses.show',compact('course'));
     }
@@ -95,10 +95,10 @@ class CourseController extends Controller
     public function update(Request $request, Course $course)
     {
          request()->validate([
-            'course_name' => 'required',
-            'course_code' => 'required',
+            'name' => 'required',
+            'code' => 'required',
             'description' => 'required',
-            'course_status' => 'required',
+            // 'status' => 'required',
         ]);
     
         $course->update($request->all());

@@ -32,31 +32,23 @@
             <th>Course Name</th>
             <th>Course Code</th>
             <th>Description</th>
-            <th>Description</th>
+            {{-- <th>Status</th> --}}
             <th width="280px">Action</th>
         </tr>
 	    @foreach ($courses as $course)
 	    <tr>
 	        <td>{{ ++$i }}</td>
-	        <td>{{ $course->course_name }}</td>
-	        <td>{{ $course->course_code }}</td>
+	        <td>{{ $course->name }}</td>
+	        <td>{{ $course->code }}</td>
             <td>{{ $course->description }}</td>
-            <td>{{ $course->course_status }}</td>
-	        <td>
-                <form action="{{ route('courses.destroy',$course->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('courses.show',$course->id) }}">Show</a>
-                    @can('course-edit')
-                    <a class="btn btn-primary" href="{{ route('courses.edit',$course->id) }}">Edit</a>
-                    @endcan
-
-
-                    @csrf
-                    @method('DELETE')
-                    @can('course-delete')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                    @endcan
-                </form>
-	        </td>
+            {{-- <td>{{ $course->status }}</td> --}}
+            <td>
+                <a class="btn btn-info" href="{{ route('courses.show',$course->id) }}">Show</a>
+                <a class="btn btn-primary" href="{{ route('courses.edit',$course->id) }}">Edit</a>
+                 {!! Form::open(['method' => 'DELETE','route' => ['courses.destroy', $course->id],'style'=>'display:inline']) !!}
+                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                 {!! Form::close() !!}
+             </td>
 	    </tr>
 	    @endforeach
     </table>

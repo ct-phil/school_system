@@ -5,17 +5,17 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Lecturer</h2>
+                <h2>Lecturers</h2>
             </div>
             {{-- <div class="pull-right">
                 @can('lecturer-create')
-                <a class="btn btn-success" href="{{ route('lecturers.create') }}"> Create New Lecturer</a>
+                <a class="btn btn-success" href="{{ route('lecturers.create') }}"> Create New Student</a>
                 @endcan
             </div>
         </div> --}}\
-        <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('lecturers.create') }}"> Create New Lecturer</a>
-        </div>
+        {{-- <div class="pull-right">
+            <a class="btn btn-success" href="{{ route('lecturers.create') }}"> Create New Student</a>
+        </div> --}}
     </div>
 
 
@@ -25,8 +25,43 @@
         </div>
     @endif
 
+    <div class="card">
+        <div class="card-body">
+           <h5 class="card-title">Lecturers</h5>
+           <table class="table table-striped">
+              <thead>
+                 <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Date Registered</th>
+                 </tr>
+              </thead>
+              <tbody>
+                @foreach($lecturers as $lecturer)
+                 <tr>
+                    <th scope="row">{{ ++$i }}</th>
+                    <td>{{ $lecturer->first_name }}</td>
+                    <td>{{ $lecturer->surname }}</td>
+                    <td>{{ $lecturer->dateregistered }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ route('lecturers.show',$lecturer->id) }}">Show</a>
+                        <a class="btn btn-primary" href="{{ route('lecturers.edit',$lecturer->id) }}">Edit</a>
+                         {!! Form::open(['method' => 'DELETE','route' => ['lecturers.destroy', $lecturer->id],'style'=>'display:inline']) !!}
+                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                         {!! Form::close() !!}
+                     </td>
+                 </tr>
+                @endforeach
+              </tbody>
+           </table>
+        </div>
+     </div>
 
-    <table class="table table-bordered">
+  
+
+
+    {{-- <table class="table table-bordered">
         <tr>
             <th>No</th>
             <th>Course Name</th>
@@ -60,9 +95,9 @@
 	    </tr>
 	    @endforeach
     </table>
+ --}}
 
-
-    {!! $lecturers->links() !!}
+    {{-- {!! $lecturers->links() !!} --}}
 
 
 
