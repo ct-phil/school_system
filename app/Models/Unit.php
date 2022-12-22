@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
   
-class Shift extends Model
+class Unit extends Model
 {
     use HasFactory;
   
@@ -15,8 +15,19 @@ class Shift extends Model
      * @var array
      */
     protected $fillable = [ 
-        'name',
-             
+        'first_name',
+        'middle_name',
+        'surname',
+        'father_name',
+        'father_phone',
+        'mother_name',
+        'mother_phone',
+        'sex',
+        'email',
+        'dob',
+        'address',
+        'nationality',
+        
 
     ];
 }

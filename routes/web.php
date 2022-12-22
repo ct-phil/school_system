@@ -4,6 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\UnitController;
+use App\Http\Controllers\BatchController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\ShiftController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -38,5 +45,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('courses', CourseController::class);
-
+    Route::resource('students', StudentController::class);
+    Route::resource('lecturers', LecturerController::class);
+    Route::resource('units', UnitController::class);
+    Route::resource('batches', BatchController::class);
+    Route::resource('attendances', AttendanceController::class);
+    Route::resource('faculties', FacultyController::class);
+    Route::resource('shifts', ShiftController::class);
 });

@@ -3,10 +3,10 @@
     
 namespace App\Http\Controllers;
     
-use App\Models\Student;
+use App\Models\Unit;
 use Illuminate\Http\Request;
     
-class StudentController extends Controller
+class UnitController extends Controller
 { 
     /**
      * Display a listing of the resource.
@@ -15,10 +15,10 @@ class StudentController extends Controller
      */
     // function __construct()
     // {
-    //      $this->middleware('permission:student-list|student-create|student-edit|student-delete', ['only' => ['index','show']]);
-    //      $this->middleware('permission:student-create', ['only' => ['create','store']]);
-    //      $this->middleware('permission:student-edit', ['only' => ['edit','update']]);
-    //      $this->middleware('permission:student-delete', ['only' => ['destroy']]);
+    //      $this->middleware('permission:unit-list|unit-create|unit-edit|unit-delete', ['only' => ['index','show']]);
+    //      $this->middleware('permission:unit-create', ['only' => ['create','store']]);
+    //      $this->middleware('permission:unit-edit', ['only' => ['edit','update']]);
+    //      $this->middleware('permission:unit-delete', ['only' => ['destroy']]);
     // }
     /**
      * Display a listing of the resource.
@@ -27,8 +27,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::latest()->paginate(5);
-        return view('students.index',compact('students'))
+        $units = Unit::latest()->paginate(5);
+        return view('units.index',compact('units'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
@@ -39,7 +39,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        return view('units.create');
     }
     
     /**
@@ -65,42 +65,42 @@ class StudentController extends Controller
             'nationality' => 'required',
         ]);
     
-        Student::create($request->all());
+        Unit::create($request->all());
     
-        return redirect()->route('students.index')
-                        ->with('success','Student added successfully.');
+        return redirect()->route('units.index')
+                        ->with('success','Unit added successfully.');
     }
     
     /**
      * Display the specified resource.
      *
-     * @param  \App\Student  $student
+     * @param  \App\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $students)
+    public function show(Unit $units)
     {
-        return view('students.show',compact('student'));
+        return view('units.show',compact('unit'));
     }
     
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Student  $student
+     * @param  \App\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(Unit $unit)
     {
-        return view('students.edit',compact('student'));
+        return view('units.edit',compact('unit'));
     }
     
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Student  $student
+     * @param  \App\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, Unit $unit)
     {
          request()->validate([
             'first_name' => 'required',
@@ -117,23 +117,23 @@ class StudentController extends Controller
             'nationality' => 'required',
         ]);
     
-        $student->update($request->all());
+        $unit->update($request->all());
     
-        return redirect()->route('students.index')
-                        ->with('success','Student updated successfully');
+        return redirect()->route('units.index')
+                        ->with('success','Unit updated successfully');
     }
     
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Student  $student
+     * @param  \App\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy(Unit $unit)
     {
-        $student->delete();
+        $unit->delete();
     
-        return redirect()->route('students.index')
-                        ->with('success','Student deleted successfully');
+        return redirect()->route('units.index')
+                        ->with('success','Unit deleted successfully');
     }
 }

@@ -5,16 +5,16 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Students</h2>
+                <h2>Batches</h2>
             </div>
             {{-- <div class="pull-right">
-                @can('student-create')
-                <a class="btn btn-success" href="{{ route('students.create') }}"> Create New Student</a>
+                @can('batch-create')
+                <a class="btn btn-success" href="{{ route('batches.create') }}"> Create New Student</a>
                 @endcan
             </div>
         </div> --}}\
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('students.create') }}"> Create New Student</a>
+            <a class="btn btn-success" href="{{ route('batches.create') }}"> Create New Student</a>
         </div>
     </div>
 
@@ -35,24 +35,24 @@
             <th>Description</th>
             <th width="280px">Action</th>
         </tr>
-	    @foreach ($students as $student)
+	    @foreach ($batches as $batch)
 	    <tr>
 	        <td>{{ ++$i }}</td>
-	        <td>{{ $student->course_name }}</td>
-	        <td>{{ $student->course_code }}</td>
-            <td>{{ $student->description }}</td>
-            <td>{{ $student->course_status }}</td>
+	        <td>{{ $batch->course_name }}</td>
+	        <td>{{ $batch->course_code }}</td>
+            <td>{{ $batch->description }}</td>
+            <td>{{ $batch->course_status }}</td>
 	        <td>
-                <form action="{{ route('students.destroy',$student->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('students.show',$student->id) }}">Show</a>
-                    @can('student-edit')
-                    <a class="btn btn-primary" href="{{ route('students.edit',$student->id) }}">Edit</a>
+                <form action="{{ route('batches.destroy',$batch->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('batches.show',$batch->id) }}">Show</a>
+                    @can('batch-edit')
+                    <a class="btn btn-primary" href="{{ route('batches.edit',$batch->id) }}">Edit</a>
                     @endcan
 
 
                     @csrf
                     @method('DELETE')
-                    @can('student-delete')
+                    @can('batch-delete')
                     <button type="submit" class="btn btn-danger">Delete</button>
                     @endcan
                 </form>
@@ -62,7 +62,7 @@
     </table>
 
 
-    {!! $students->links() !!}
+    {!! $batches->links() !!}
 
 
 

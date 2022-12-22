@@ -5,16 +5,16 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Students</h2>
+                <h2>Units</h2>
             </div>
             {{-- <div class="pull-right">
-                @can('student-create')
-                <a class="btn btn-success" href="{{ route('students.create') }}"> Create New Student</a>
+                @can('unit-create')
+                <a class="btn btn-success" href="{{ route('units.create') }}"> Create New Student</a>
                 @endcan
             </div>
         </div> --}}\
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('students.create') }}"> Create New Student</a>
+            <a class="btn btn-success" href="{{ route('units.create') }}"> Create New Student</a>
         </div>
     </div>
 
@@ -35,24 +35,24 @@
             <th>Description</th>
             <th width="280px">Action</th>
         </tr>
-	    @foreach ($students as $student)
+	    @foreach ($units as $unit)
 	    <tr>
 	        <td>{{ ++$i }}</td>
-	        <td>{{ $student->course_name }}</td>
-	        <td>{{ $student->course_code }}</td>
-            <td>{{ $student->description }}</td>
-            <td>{{ $student->course_status }}</td>
+	        <td>{{ $unit->course_name }}</td>
+	        <td>{{ $unit->course_code }}</td>
+            <td>{{ $unit->description }}</td>
+            <td>{{ $unit->course_status }}</td>
 	        <td>
-                <form action="{{ route('students.destroy',$student->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('students.show',$student->id) }}">Show</a>
-                    @can('student-edit')
-                    <a class="btn btn-primary" href="{{ route('students.edit',$student->id) }}">Edit</a>
+                <form action="{{ route('units.destroy',$unit->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('units.show',$unit->id) }}">Show</a>
+                    @can('unit-edit')
+                    <a class="btn btn-primary" href="{{ route('units.edit',$unit->id) }}">Edit</a>
                     @endcan
 
 
                     @csrf
                     @method('DELETE')
-                    @can('student-delete')
+                    @can('unit-delete')
                     <button type="submit" class="btn btn-danger">Delete</button>
                     @endcan
                 </form>
@@ -62,7 +62,7 @@
     </table>
 
 
-    {!! $students->links() !!}
+    {!! $units->links() !!}
 
 
 

@@ -50,10 +50,10 @@
       <aside id="sidebar" class="sidebar">
          <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item"> <a class="nav-link collapsed" href="index.html"> <i class="bi bi-grid"></i> <span>Dashboard</span> </a></li>
-            <li class="nav-item"> <a class="nav-link collapsed" href="index.html"> <i class="bi bi-grid"></i> <span>Students</span> </a></li>
-            <li class="nav-item"> <a class="nav-link collapsed" href="index.html"> <i class="bi bi-grid"></i> <span>Lecturers</span> </a></li>
+            <li class="nav-item"> <a class="nav-link collapsed" href="{{ route('students.index') }}"> <i class="bi bi-grid"></i> <span>Students</span> </a></li>
+            <li class="nav-item"> <a class="nav-link collapsed" href="{{ route('lecturers.index') }}"> <i class="bi bi-grid"></i> <span>Lecturers</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="{{ route('courses.index') }}"> <i class="bi bi-grid"></i> <span>Courses</span> </a></li>
-            <li class="nav-item"> <a class="nav-link collapsed" href="index.html"> <i class="bi bi-grid"></i> <span>Attendance</span> </a></li>
+            {{-- <li class="nav-item"> <a class="nav-link collapsed" href="index.html"> <i class="bi bi-grid"></i> <span>Attendance</span> </a></li> --}}
             <li class="nav-item"> <a class="nav-link collapsed" href="index.html"> <i class="bi bi-grid"></i> <span>Settings</span> </a></li>
 
             <li class="nav-item">
