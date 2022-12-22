@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Create New User</h2>
+            <h2>Create New Admin</h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
@@ -27,7 +27,7 @@
 
 <div class="card">
     <div class="card-body">
-       <h5 class="card-title">Vertical Form</h5>
+       <h5 class="card-title">User Form</h5>
        <form class="row g-3" method="POST" action="{{ route('users.store') }}">
         @csrf
           <div class="col-12"> <label for="name" class="form-label">Name</label> <input type="text" class="form-control" name="name"></div>
@@ -38,7 +38,8 @@
                 {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
             </div>
         </div>
-          <div class="col-12">
+        <div class="col-12"><input type="hidden" class="form-control" name="account_type" value="1"></div>
+          {{-- <div class="col-12">
             <label for="inputState" class="form-label">Account Type</label> 
             <select name="account_type" class="form-select">
                <option value="">Choose...</option>
@@ -46,7 +47,7 @@
                <option value="2">Lecturer</option>
                <option value="3">Student</option>
             </select>
-         </div>
+         </div> --}}
           <div class="col-12"> <label for="password" class="form-label">Password</label> <input type="password" class="form-control" name="password"></div>
           <div class="col-12"> <label for="inputPassword4" class="form-label">Confrim Password</label> <input type="password" class="form-control" name="confirm-password"></div>
           <div class="text-center"> <button type="submit" class="btn btn-primary">Submit</button> <button type="reset" class="btn btn-secondary">Reset</button></div>

@@ -55,7 +55,7 @@
 </table>
 
 
-{!! $data->render() !!}
+{{-- {!! $data->render() !!} --}}
 
 
 

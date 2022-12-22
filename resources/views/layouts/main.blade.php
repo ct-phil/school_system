@@ -59,8 +59,19 @@
             <li class="nav-item">
                <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-layout-text-window-reverse"></i><span>User Management</span><i class="bi bi-chevron-down ms-auto"></i> </a>
                <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                  <li> <a href="{{ route('users.index') }}"> <i class="bi bi-circle"></i><span>Manage Admins</span> </a></li>
+                  <li> <a href="{{ route('users.index') }}"> <i class="bi bi-circle"></i><span>Manage Users</span> </a></li>
                   <li> <a href="{{ route('roles.index') }}"> <i class="bi bi-circle"></i><span>Manage Roles</span> </a></li>
+               </ul>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-layout-text-window-reverse"></i><span>School Management</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+               <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                  <li> <a href="{{ route('attendances.index') }}"> <i class="bi bi-circle"></i><span>Attendance</span> </a></li>
+                  <li> <a href="{{ route('batches.index') }}"> <i class="bi bi-circle"></i><span>Batches</span> </a></li>
+                  <li> <a href="{{ route('units.index') }}"> <i class="bi bi-circle"></i><span>Units</span> </a></li>
+                  <li> <a href="{{ route('faculties.index') }}"> <i class="bi bi-circle"></i><span>Faculties</span> </a></li>
+                  <li> <a href="{{ route('shifts.index') }}"> <i class="bi bi-circle"></i><span>Shifts</span> </a></li>
+
                </ul>
             </li>
          </ul>

@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
     
 use App\Models\Lecturer;
+use App\Models\User;
 use Illuminate\Http\Request;
     
 class LecturerController extends Controller
@@ -27,7 +28,7 @@ class LecturerController extends Controller
      */
     public function index()
     {
-        $lecturers = Lecturer::latest()->paginate(5);
+        $lecturers = User::where('account_type', 2)->latest()->paginate(5);
         return view('lecturers.index',compact('lecturers'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -51,21 +52,14 @@ class LecturerController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'surname' => 'required',
-            'father_name' => 'required',
-            'father_phone' => 'required',
-            'mother_name' => 'required',
-            'mother_phone' => 'required',
-            'sex' => 'required',
-            'email' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-            'nationality' => 'required',
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'roles' => 'nullable',
+            'account_type' => 'required'
         ]);
     
-        Lecturer::create($request->all());
+        User::create($request->all());
     
         return redirect()->route('lecturers.index')
                         ->with('success','Lecturer added successfully.');
@@ -103,18 +97,11 @@ class LecturerController extends Controller
     public function update(Request $request, Lecturer $lecturer)
     {
          request()->validate([
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'surname' => 'required',
-            'father_name' => 'required',
-            'father_phone' => 'required',
-            'mother_name' => 'required',
-            'mother_phone' => 'required',
-            'sex' => 'required',
-            'email' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-            'nationality' => 'required',
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'roles' => 'nullable',
+            'account_type' => 'required'
         ]);
     
         $lecturer->update($request->all());

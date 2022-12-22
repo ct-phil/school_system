@@ -7,15 +7,9 @@
             <div class="pull-left">
                 <h2>Students</h2>
             </div>
-            {{-- <div class="pull-right">
-                @can('student-create')
+            <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('students.create') }}"> Create New Student</a>
-                @endcan
             </div>
-        </div> --}}\
-        {{-- <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('students.create') }}"> Create New Student</a>
-        </div> --}}
     </div>
 
 
@@ -32,7 +26,8 @@
               <thead>
                  <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Roll No</th>
+                    <th scope="col">Name </th>
+                    <th scope="col">Email</th>
                     <th scope="col">Date Registered</th>
                     <th scope="col">Action</th>
                  </tr>
@@ -41,8 +36,9 @@
                 @foreach($students as $student)
                  <tr>
                     <th scope="row">{{ ++$i }}</th>
-                    <td>{{ $student->roll_no }}</td>
-                    <td>{{ $student->dateregistered }}</td>
+                    <td>{{ $student->name }}</td>
+                    <td>{{ $student->email }}</td>
+                    <td>{{ $student->created_at }}</td>
                     <td>
                         <a class="btn btn-info" href="{{ route('students.show',$student->id) }}">Show</a>
                         <a class="btn btn-primary" href="{{ route('students.edit',$student->id) }}">Edit</a>

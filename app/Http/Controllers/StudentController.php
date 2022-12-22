@@ -3,9 +3,11 @@
     
 namespace App\Http\Controllers;
     
-use App\Models\Student;
+
+use App\Models\User;
 use Illuminate\Http\Request;
-    
+use Illuminate\Support\Facades\Hash;
+
 class StudentController extends Controller
 { 
     /**
@@ -27,7 +29,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::latest()->paginate(5);
+        $students = User::where('account_type', 3)->latest()->paginate(5);
         return view('students.index',compact('students'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -51,21 +53,14 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'surname' => 'required',
-            'father_name' => 'required',
-            'father_phone' => 'required',
-            'mother_name' => 'required',
-            'mother_phone' => 'required',
-            'sex' => 'required',
-            'email' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-            'nationality' => 'required',
+           'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'roles' => 'nullable',
+            'account_type' => 'required'
         ]);
-    
-        Student::create($request->all());
+
+        User::create($request->all());
     
         return redirect()->route('students.index')
                         ->with('success','Student added successfully.');
@@ -77,7 +72,7 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $students)
+    public function show(User $students)
     {
         return view('students.show',compact('student'));
     }
@@ -88,7 +83,7 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(User $student)
     {
         return view('students.edit',compact('student'));
     }
@@ -100,24 +95,20 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
-    {
+    public function update(Request $request, User $user)
+    {   
+        
          request()->validate([
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'surname' => 'required',
-            'father_name' => 'required',
-            'father_phone' => 'required',
-            'mother_name' => 'required',
-            'mother_phone' => 'required',
-            'sex' => 'required',
-            'email' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-            'nationality' => 'required',
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'roles' => 'nullable',
+            'account_type' => 'required'
         ]);
+
+
     
-        $student->update($request->all());
+        $user->update($request->all());
     
         return redirect()->route('students.index')
                         ->with('success','Student updated successfully');
@@ -129,7 +120,7 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy(User $student)
     {
         $student->delete();
     

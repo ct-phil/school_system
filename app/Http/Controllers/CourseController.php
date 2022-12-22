@@ -50,6 +50,7 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         request()->validate([
             'name' => 'required',
             'code' => 'required',
