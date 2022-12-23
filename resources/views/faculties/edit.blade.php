@@ -5,10 +5,10 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Edit Course</h2>
+            <h2>Edit Faculty</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('courses.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('faculties.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -26,7 +26,7 @@
 @endif
 
 
-{!! Form::model($course, ['method' => 'PATCH','route' => ['courses.update', $course->id]]) !!}
+{!! Form::model($faculty, ['method' => 'PATCH','route' => ['faculties.update', $faculty->id]]) !!}
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">

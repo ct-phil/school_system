@@ -5,10 +5,10 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Edit Course</h2>
+            <h2>Edit Unit</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('courses.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('units.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -26,7 +26,7 @@
 @endif
 
 
-{!! Form::model($course, ['method' => 'PATCH','route' => ['courses.update', $course->id]]) !!}
+{!! Form::model($unit, ['method' => 'PATCH','route' => ['units.update', $unit->id]]) !!}
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
@@ -42,8 +42,8 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Description:</strong>
-            {!! Form::text('description', null, array('placeholder' => 'Description','class' => 'form-control')) !!}
+            <strong>Hours:</strong>
+            {!! Form::text('hours', null, array('placeholder' => 'Hours','class' => 'form-control')) !!}
         </div>
     </div>
     

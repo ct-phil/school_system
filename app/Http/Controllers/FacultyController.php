@@ -51,18 +51,10 @@ class FacultyController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'surname' => 'required',
-            'father_name' => 'required',
-            'father_phone' => 'required',
-            'mother_name' => 'required',
-            'mother_phone' => 'required',
-            'sex' => 'required',
-            'email' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-            'nationality' => 'required',
+            'name' => 'required',
+            'code' => 'required',
+            'description' => 'required',
+            
         ]);
     
         Faculty::create($request->all());
@@ -77,7 +69,7 @@ class FacultyController extends Controller
      * @param  \App\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function show(Faculty $faculties)
+    public function show(Faculty $faculty)
     {
         return view('faculties.show',compact('faculty'));
     }
@@ -103,18 +95,9 @@ class FacultyController extends Controller
     public function update(Request $request, Faculty $faculty)
     {
          request()->validate([
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'surname' => 'required',
-            'father_name' => 'required',
-            'father_phone' => 'required',
-            'mother_name' => 'required',
-            'mother_phone' => 'required',
-            'sex' => 'required',
-            'email' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-            'nationality' => 'required',
+            'name' => 'required',
+            'code' => 'required',
+            'description' => 'required',
         ]);
     
         $faculty->update($request->all());

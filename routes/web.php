@@ -32,8 +32,8 @@ Route::get('/', function () {
 //     return view('courses.index');
 // });
 
-Route::get('/homepage', function () {
-    return view('homepage');
+Route::get('/dashboard', function () {
+    return view('dashboard');
 });
 
 

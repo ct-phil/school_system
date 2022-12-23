@@ -51,18 +51,8 @@ class ShiftController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'surname' => 'required',
-            'father_name' => 'required',
-            'father_phone' => 'required',
-            'mother_name' => 'required',
-            'mother_phone' => 'required',
-            'sex' => 'required',
-            'email' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-            'nationality' => 'required',
+            'name' => 'required',
+            
         ]);
     
         Shift::create($request->all());
@@ -77,7 +67,7 @@ class ShiftController extends Controller
      * @param  \App\Shift  $shift
      * @return \Illuminate\Http\Response
      */
-    public function show(Shift $shifts)
+    public function show(Shift $shift)
     {
         return view('shifts.show',compact('shift'));
     }
@@ -103,18 +93,8 @@ class ShiftController extends Controller
     public function update(Request $request, Shift $shift)
     {
          request()->validate([
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'surname' => 'required',
-            'father_name' => 'required',
-            'father_phone' => 'required',
-            'mother_name' => 'required',
-            'mother_phone' => 'required',
-            'sex' => 'required',
-            'email' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-            'nationality' => 'required',
+            'name' => 'required',
+           
         ]);
     
         $shift->update($request->all());

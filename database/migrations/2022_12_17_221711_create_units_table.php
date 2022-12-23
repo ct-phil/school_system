@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('units', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('code')->unique();
+            $table->string('code')->unique();
             $table->integer('hours');
-            $table->tinyInteger('status')->default(1);
+            // $table->tinyInteger('status')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

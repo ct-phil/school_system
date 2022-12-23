@@ -5,10 +5,10 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Edit Course</h2>
+            <h2>Edit Shift</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('courses.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('shifts.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -26,7 +26,7 @@
 @endif
 
 
-{!! Form::model($course, ['method' => 'PATCH','route' => ['courses.update', $course->id]]) !!}
+{!! Form::model($shift, ['method' => 'PATCH','route' => ['shifts.update', $shift->id]]) !!}
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
@@ -34,18 +34,7 @@
             {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Code:</strong>
-            {!! Form::text('code', null, array('placeholder' => 'Code','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Description:</strong>
-            {!! Form::text('description', null, array('placeholder' => 'Description','class' => 'form-control')) !!}
-        </div>
-    </div>
+    
     
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <button type="submit" class="btn btn-primary">Submit</button>

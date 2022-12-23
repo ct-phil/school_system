@@ -17,6 +17,5 @@ class Shift extends Model
     protected $fillable = [ 
         'name',
              
-
     ];
 }

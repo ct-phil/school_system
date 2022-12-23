@@ -15,19 +15,10 @@ class Unit extends Model
      * @var array
      */
     protected $fillable = [ 
-        'first_name',
-        'middle_name',
-        'surname',
-        'father_name',
-        'father_phone',
-        'mother_name',
-        'mother_phone',
-        'sex',
-        'email',
-        'dob',
-        'address',
-        'nationality',
-        
+       'name',
+       'code',
+       'hours',
+    //    'status',
 
     ];
 }

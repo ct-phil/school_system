@@ -14,7 +14,7 @@
             </div>
         </div> --}}\
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('batches.create') }}"> Create New Student</a>
+            <a class="btn btn-success" href="{{ route('batches.create') }}"> Create New Batch</a>
         </div>
     </div>
 
@@ -29,34 +29,20 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Course Name</th>
-            <th>Course Code</th>
-            <th>Description</th>
-            <th>Description</th>
+            <th>Batch Name</th>
             <th width="280px">Action</th>
         </tr>
 	    @foreach ($batches as $batch)
 	    <tr>
 	        <td>{{ ++$i }}</td>
-	        <td>{{ $batch->course_name }}</td>
-	        <td>{{ $batch->course_code }}</td>
-            <td>{{ $batch->description }}</td>
-            <td>{{ $batch->course_status }}</td>
-	        <td>
-                <form action="{{ route('batches.destroy',$batch->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('batches.show',$batch->id) }}">Show</a>
-                    @can('batch-edit')
-                    <a class="btn btn-primary" href="{{ route('batches.edit',$batch->id) }}">Edit</a>
-                    @endcan
-
-
-                    @csrf
-                    @method('DELETE')
-                    @can('batch-delete')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                    @endcan
-                </form>
-	        </td>
+	        <td>{{ $batch->name }}</td>
+            <td>
+                <a class="btn btn-info" href="{{ route('batches.show',$batch->id) }}">Show</a>
+                <a class="btn btn-primary" href="{{ route('batches.edit',$batch->id) }}">Edit</a>
+                 {!! Form::open(['method' => 'DELETE','route' => ['batches.destroy', $batch->id],'style'=>'display:inline']) !!}
+                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                 {!! Form::close() !!}
+             </td>
 	    </tr>
 	    @endforeach
     </table>

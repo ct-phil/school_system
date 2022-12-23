@@ -9,7 +9,7 @@
             </div>
             {{-- <div class="pull-right">
                 @can('shift-create')
-                <a class="btn btn-success" href="{{ route('shifts.create') }}"> Create New Shift</a>
+                <a class="btn btn-success" href="{{ route('shifts.create') }}"> Create New Student</a>
                 @endcan
             </div>
         </div> --}}\
@@ -29,40 +29,26 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Course Name</th>
-            <th>Course Code</th>
-            <th>Description</th>
-            <th>Description</th>
+            <th>Shift Name</th>
             <th width="280px">Action</th>
         </tr>
 	    @foreach ($shifts as $shift)
 	    <tr>
 	        <td>{{ ++$i }}</td>
-	        <td>{{ $shift->course_name }}</td>
-	        <td>{{ $shift->course_code }}</td>
-            <td>{{ $shift->description }}</td>
-            <td>{{ $shift->course_status }}</td>
-	        <td>
-                <form action="{{ route('shifts.destroy',$shift->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('shifts.show',$shift->id) }}">Show</a>
-                    @can('shift-edit')
-                    <a class="btn btn-primary" href="{{ route('shifts.edit',$shift->id) }}">Edit</a>
-                    @endcan
-
-
-                    @csrf
-                    @method('DELETE')
-                    @can('shift-delete')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                    @endcan
-                </form>
-	        </td>
+	        <td>{{ $shift->name }}</td>
+            <td>
+                <a class="btn btn-info" href="{{ route('shifts.show',$shift->id) }}">Show</a>
+                <a class="btn btn-primary" href="{{ route('shifts.edit',$shift->id) }}">Edit</a>
+                 {!! Form::open(['method' => 'DELETE','route' => ['shifts.destroy', $shift->id],'style'=>'display:inline']) !!}
+                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                 {!! Form::close() !!}
+             </td>
 	    </tr>
 	    @endforeach
     </table>
 
 
-    {!! $shifts->links() !!}
+    {{-- {!! $shifts->links() !!} --}}
 
 
 

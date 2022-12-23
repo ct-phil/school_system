@@ -14,7 +14,7 @@
             </div>
         </div> --}}\
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('faculties.create') }}"> Create New Student</a>
+            <a class="btn btn-success" href="{{ route('faculties.create') }}"> Create New Faculty</a>
         </div>
     </div>
 
@@ -29,40 +29,32 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Course Name</th>
-            <th>Course Code</th>
+            <th>Faculty Name</th>
+            <th>Faculty Code</th>
             <th>Description</th>
-            <th>Description</th>
+            {{-- <th>Status</th> --}}
             <th width="280px">Action</th>
         </tr>
 	    @foreach ($faculties as $faculty)
 	    <tr>
 	        <td>{{ ++$i }}</td>
-	        <td>{{ $faculty->course_name }}</td>
-	        <td>{{ $faculty->course_code }}</td>
+	        <td>{{ $faculty->name }}</td>
+	        <td>{{ $faculty->code }}</td>
             <td>{{ $faculty->description }}</td>
-            <td>{{ $faculty->course_status }}</td>
-	        <td>
-                <form action="{{ route('faculties.destroy',$faculty->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('faculties.show',$faculty->id) }}">Show</a>
-                    @can('faculty-edit')
-                    <a class="btn btn-primary" href="{{ route('faculties.edit',$faculty->id) }}">Edit</a>
-                    @endcan
-
-
-                    @csrf
-                    @method('DELETE')
-                    @can('faculty-delete')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                    @endcan
-                </form>
-	        </td>
+            {{-- <td>{{ $faculty->status }}</td> --}}
+            <td>
+                <a class="btn btn-info" href="{{ route('faculties.show',$faculty->id) }}">Show</a>
+                <a class="btn btn-primary" href="{{ route('faculties.edit',$faculty->id) }}">Edit</a>
+                 {!! Form::open(['method' => 'DELETE','route' => ['faculties.destroy', $faculty->id],'style'=>'display:inline']) !!}
+                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                 {!! Form::close() !!}
+             </td>
 	    </tr>
 	    @endforeach
     </table>
 
 
-    {!! $faculties->links() !!}
+    {{-- {!! $faculties->links() !!} --}}
 
 
 

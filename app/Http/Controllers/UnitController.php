@@ -51,18 +51,11 @@ class UnitController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'surname' => 'required',
-            'father_name' => 'required',
-            'father_phone' => 'required',
-            'mother_name' => 'required',
-            'mother_phone' => 'required',
-            'sex' => 'required',
-            'email' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-            'nationality' => 'required',
+            'name' => 'required',
+            'code' => 'required',
+            'hours' => 'required',
+            // 'status' => 'required',
+            
         ]);
     
         Unit::create($request->all());
@@ -77,7 +70,7 @@ class UnitController extends Controller
      * @param  \App\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function show(Unit $units)
+    public function show(Unit $unit)
     {
         return view('units.show',compact('unit'));
     }
@@ -103,18 +96,10 @@ class UnitController extends Controller
     public function update(Request $request, Unit $unit)
     {
          request()->validate([
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'surname' => 'required',
-            'father_name' => 'required',
-            'father_phone' => 'required',
-            'mother_name' => 'required',
-            'mother_phone' => 'required',
-            'sex' => 'required',
-            'email' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-            'nationality' => 'required',
+            'name' => 'required',
+            'code' => 'required',
+            'hours' => 'required',
+            // 'status' => 'required',
         ]);
     
         $unit->update($request->all());
