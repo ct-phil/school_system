@@ -20,4 +20,10 @@ class Faculty extends Model
         'description',     
 
     ];
+
+    public function lecturers()
+    {
+        return $this->hasMany(Users::class, 'lectuerer_id');
+    }
+   
 }

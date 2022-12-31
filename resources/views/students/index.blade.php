@@ -29,6 +29,7 @@
                     <th scope="col">Name </th>
                     <th scope="col">Email</th>
                     <th scope="col">Date Registered</th>
+                     <th scope="col">Regstratio Number</th>
                     <th scope="col">Action</th>
                  </tr>
               </thead>
@@ -39,6 +40,7 @@
                     <td>{{ $student->name }}</td>
                     <td>{{ $student->email }}</td>
                     <td>{{ $student->created_at }}</td>
+                    <td>{{ $student->studentDetail->reg_no }}</td>
                     <td>
                         <a class="btn btn-info" href="{{ route('students.show',$student->id) }}">Show</a>
                         <a class="btn btn-primary" href="{{ route('students.edit',$student->id) }}">Edit</a>
@@ -49,7 +51,10 @@
                  </tr>
                 @endforeach
               </tbody>
+
            </table>
+           {{-- {!! $students->links() !!} --}}
+
         </div>
      </div>
 
@@ -92,8 +97,7 @@
     </table>
  --}}
 
-    {{-- {!! $students->links() !!} --}}
-
+    
 
 
 @endsection

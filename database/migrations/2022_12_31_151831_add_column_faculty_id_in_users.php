@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lecturer_details', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('lecturer_id')->constrained('users')->onDelete('cascade');
-            $table->string('id_number')->nullable();
-            $table->string('passport_no')->nullable();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('facutly_id')->nullable()->constrained('faculties')->onDelete('cascade');
+
         });
     }
 
@@ -29,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lecturer_details');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

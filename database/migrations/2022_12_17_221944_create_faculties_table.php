@@ -16,10 +16,8 @@ return new class extends Migration
         Schema::create('faculties', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            // $table->foreignId('lecturer_id')->constrained('users');
             $table->string('code')->unique();
             $table->longText('description');
-            // $table->tinyInteger('status')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

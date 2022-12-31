@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('student_details', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
+            $table->string('id_number')->nullable();
+            $table->string('passport_no')->nullable();
+            $table->string('reg_no')->unique();
             $table->timestamps();
         });
     }

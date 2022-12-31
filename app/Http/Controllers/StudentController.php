@@ -29,7 +29,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = User::where('account_type', 3)->latest()->paginate(5);
+        $students = User::where('account_type', 3)->latest()->paginate(30);
         return view('students.index',compact('students'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

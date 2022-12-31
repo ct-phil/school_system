@@ -18,6 +18,12 @@ class Course extends Model
         'name', 
         'code',
         'description',
-        'status'
+        // 'status'
     ];
+
+
+    public function semesters()
+    {
+        return $this->hasMany(Semester::class);
+    }
 }

@@ -21,4 +21,11 @@ class Unit extends Model
     //    'status',
 
     ];
+
+    public function semester()
+    {
+        return $this->belongsTo(Semester::class);
+    }
+
+
 }

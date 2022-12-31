@@ -17,6 +17,10 @@ class Batch extends Model
     protected $fillable = [ 
         'name',
              
-
     ];
+
+    public function students()
+    {
+        return $this->hasMany(Users::class, 'student_id');
+    }
 }
