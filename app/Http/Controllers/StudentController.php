@@ -83,8 +83,9 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $student)
-    {
+    public function edit($id)
+    {  
+        $student = User::find($id);
         return view('students.edit',compact('student'));
     }
     
@@ -95,20 +96,21 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {   
-        
+        // dd($request->all());
+        $student = User::find($id);
          request()->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users,email,'.$student->id,
             'password' => 'required|same:confirm-password',
             'roles' => 'nullable',
-            'account_type' => 'required'
+            
         ]);
 
 
     
-        $user->update($request->all());
+        $student->update($request->all());
     
         return redirect()->route('students.index')
                         ->with('success','Student updated successfully');

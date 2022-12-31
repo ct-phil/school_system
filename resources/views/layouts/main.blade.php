@@ -49,7 +49,8 @@
       </header>
       <aside id="sidebar" class="sidebar">
          <ul class="sidebar-nav" id="sidebar-nav">
-            <li class="nav-item"> <a class="nav-link collapsed" href="index.html"> <i class="bi bi-grid"></i> <span>Dashboard</span> </a></li>
+            <li class="nav-item"> <a class="nav-link collapsed" href="{{ url('dashboard') }}
+               "> <i class="bi bi-grid"></i> <span>Dashboard</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="{{ route('students.index') }}"> <i class="bi bi-grid"></i> <span>Students</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="{{ route('lecturers.index') }}"> <i class="bi bi-grid"></i> <span>Lecturers</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="{{ route('courses.index') }}"> <i class="bi bi-grid"></i> <span>Courses</span> </a></li>
@@ -64,8 +65,8 @@
                </ul>
             </li>
             <li class="nav-item">
-               <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-layout-text-window-reverse"></i><span>School Management</span><i class="bi bi-chevron-down ms-auto"></i> </a>
-               <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+               <a class="nav-link collapsed" data-bs-target="#settings-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-layout-text-window-reverse"></i><span>School Management</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+               <ul id="settings-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                   <li> <a href="{{ route('attendances.index') }}"> <i class="bi bi-circle"></i><span>Attendance</span> </a></li>
                   <li> <a href="{{ route('batches.index') }}"> <i class="bi bi-circle"></i><span>Batches</span> </a></li>
                   <li> <a href="{{ route('units.index') }}"> <i class="bi bi-circle"></i><span>Units</span> </a></li>

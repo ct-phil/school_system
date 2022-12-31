@@ -82,8 +82,9 @@ class LecturerController extends Controller
      * @param  \App\Lecturer  $lecturer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lecturer $lecturer)
-    {
+    public function edit($id)
+    {   
+        $lecturer = User::find($id);
         return view('lecturers.edit',compact('lecturer'));
     }
     
@@ -94,14 +95,16 @@ class LecturerController extends Controller
      * @param  \App\Lecturer  $lecturer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lecturer $lecturer)
-    {
+    public function update(Request $request, $id)
+    {   
+        // dd($request->all());
+        $lecturer = User::find($id);
          request()->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users,email,'.$lecturer->id,
             'password' => 'required|same:confirm-password',
             'roles' => 'nullable',
-            'account_type' => 'required'
+            
         ]);
     
         $lecturer->update($request->all());

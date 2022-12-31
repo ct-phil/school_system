@@ -26,7 +26,7 @@
 @endif
 
 
-{!! Form::model($user, ['method' => 'PATCH','route' => ['students.update', $user->id]]) !!}
+{!! Form::model($student, ['method' => 'PATCH','route' => ['students.update', $student->id]]) !!}
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
