@@ -22,7 +22,7 @@
    </head>
    <body>
       <header id="header" class="header fixed-top d-flex align-items-center">
-         <div class="d-flex align-items-center justify-content-between"> <a href="index.html" class="logo d-flex align-items-center"> <img src="assets/img/logo.png" alt=""> <span class="d-none d-lg-block">Admin</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
+         <div class="d-flex align-items-center justify-content-between"> <a href="index.html" class="logo d-flex align-items-center"> <img src="assets/img/logo.png" alt=""> <span class="d-none d-lg-block">My App</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
          <div class="search-bar">
             <form class="search-form d-flex align-items-center" method="POST" action="#"> <input type="text" name="query" placeholder="Search" title="Enter search keyword"> <button type="submit" title="Search"><i class="bi bi-search"></i></button></form>
          </div>
@@ -59,30 +59,7 @@
          <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item"> <a class="nav-link collapsed" href="{{ url('dashboard') }}
                "> <i class="bi bi-grid"></i> <span>Dashboard</span> </a></li>
-            <li class="nav-item"> <a class="nav-link collapsed" href="{{ route('students.index') }}"> <i class="bi bi-grid"></i> <span>Students</span> </a></li>
-            <li class="nav-item"> <a class="nav-link collapsed" href="{{ route('lecturers.index') }}"> <i class="bi bi-grid"></i> <span>Lecturers</span> </a></li>
-            <li class="nav-item"> <a class="nav-link collapsed" href="{{ route('courses.index') }}"> <i class="bi bi-grid"></i> <span>Courses</span> </a></li>
-            {{-- <li class="nav-item"> <a class="nav-link collapsed" href="index.html"> <i class="bi bi-grid"></i> <span>Attendance</span> </a></li> --}}
-            <li class="nav-item"> <a class="nav-link collapsed" href="index.html"> <i class="bi bi-grid"></i> <span>Settings</span> </a></li>
-
-            <li class="nav-item">
-               <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-layout-text-window-reverse"></i><span>User Management</span><i class="bi bi-chevron-down ms-auto"></i> </a>
-               <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                  <li> <a href="{{ route('users.index') }}"> <i class="bi bi-circle"></i><span>Manage Users</span> </a></li>
-                  <li> <a href="{{ route('roles.index') }}"> <i class="bi bi-circle"></i><span>Manage Roles</span> </a></li>
-               </ul>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link collapsed" data-bs-target="#settings-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-layout-text-window-reverse"></i><span>School Management</span><i class="bi bi-chevron-down ms-auto"></i> </a>
-               <ul id="settings-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                  <li> <a href="{{ route('attendances.index') }}"> <i class="bi bi-circle"></i><span>Attendance</span> </a></li>
-                  <li> <a href="{{ route('batches.index') }}"> <i class="bi bi-circle"></i><span>Batches</span> </a></li>
-                  <li> <a href="{{ route('units.index') }}"> <i class="bi bi-circle"></i><span>Units</span> </a></li>
-                  <li> <a href="{{ route('faculties.index') }}"> <i class="bi bi-circle"></i><span>Faculties</span> </a></li>
-                  <li> <a href="{{ route('shifts.index') }}"> <i class="bi bi-circle"></i><span>Shifts</span> </a></li>
-
-               </ul>
-            </li>
+            <li class="nav-item"> <a class="nav-link collapsed" href=""> <i class="bi bi-grid"></i> <span>Units</span> </a></li>
          </ul>
       </aside>
       <main id="main" class="main">
@@ -98,17 +75,7 @@
          </div>
          <section class="section">
             @yield('content')
-            {{-- <div class="row">
-               <div class="col-lg-6">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Example Card</h5>
-                        <p>This is an examle page with no contrnt. You can use it as a starter for your custom pages.</p>
-                     </div>
-                  </div>
-               </div>
-         
-            </div> --}}
+            
          </section>
       </main>
       <footer id="footer" class="footer">

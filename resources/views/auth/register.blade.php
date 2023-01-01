@@ -26,6 +26,20 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="" class="col-md-4 col-form-label text-md-end">{{ __('Course') }}</label>
+
+                            <div class="col-md-6">
+                              <select name="course_id" id="" class="form-control" required>
+                                <option value="">-- Select Course --</option>
+                                @foreach($courses as $course)
+                                <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                @endforeach
+                                 </select>
+
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
@@ -60,6 +74,17 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            {{-- <label for="" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label> --}}
+
+                            <div class="col-md-6">
+                                <input id="account_type" type="hidden" class="form-control"  name="account_type" value="3" >
+
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="acceptance" value="0">
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
