@@ -11,7 +11,9 @@ use App\Http\Controllers\BatchController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ShiftController;
+use App\Mail\AcceptanceLetter;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,10 @@ Route::get('/dashboard', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route::get('/', function () {
+//    Mail::send(new AcceptanceLetter());
+// });
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);

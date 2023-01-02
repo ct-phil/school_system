@@ -45,9 +45,9 @@
                     <td>@if ($student->acceptance == 1)
                         'accepted'
                     @elseif($student->acceptance == 0)
-                        'pending'
+                        Pending
                         @else
-                        'denied'
+                        Denied
                     @endif</td>
                     <td>
                         <a class="btn btn-info" href="{{ route('students.show',$student->id) }}">Show</a>
@@ -55,6 +55,8 @@
                          {!! Form::open(['method' => 'DELETE','route' => ['students.destroy', $student->id],'style'=>'display:inline']) !!}
                              {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                          {!! Form::close() !!}
+                         <a class="btn btn-info" href="{{ route('students.edit',$student->id) }}">Response</a>
+
                      </td>
                  </tr>
                 @endforeach
