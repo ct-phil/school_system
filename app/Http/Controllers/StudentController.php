@@ -91,6 +91,8 @@ class StudentController extends Controller
         $student = User::find($id);
         return view('students.edit',compact('student'));
     }
+
+    
     
     /**
      * Update the specified resource in storage.
@@ -108,6 +110,7 @@ class StudentController extends Controller
             'email' => 'required|email|unique:users,email,'.$student->id,
             'password' => 'required|same:confirm-password',
             'roles' => 'nullable',
+            // 'acceptance' =>'required',
             
         ]);
 

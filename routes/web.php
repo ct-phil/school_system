@@ -39,9 +39,7 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
-// Route::get('/', function () {
-//     Mail::send(new AcceptanceLetter());
-// });
+
 
 Auth::routes();
 

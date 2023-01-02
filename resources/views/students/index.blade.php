@@ -42,8 +42,9 @@
                     <td>{{ $student->email }}</td>
                     <td>{{ $student->created_at }}</td>
                     <td>{{ $student->studentDetail->reg_no ?? '' }}</td>
+                   
                     <td>@if ($student->acceptance == 1)
-                        accepted
+                        Accepted
                     @elseif($student->acceptance == 0)
                         Pending
                         @else
