@@ -21,7 +21,7 @@ class LecturerSeeder extends Seeder
         //
         // Lecturer::factory()->count(50)->create();
 
-        $z = 50;
+        $z = 10;
 
 
         for ($i = 0; $i <= $z; $i++) {
