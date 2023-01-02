@@ -10,7 +10,9 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\Lecturer\HomeController as LecturerHomeController;
 use App\Http\Controllers\ShiftController;
+use App\Http\Controllers\Student\HomeController as StudentHomeController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -40,8 +42,9 @@ Route::get('/dashboard', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/not_authorized', [App\Http\Controllers\NotAuthController::class, 'index'])->name('not_authorized');
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth', 'admin']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('courses', CourseController::class);
@@ -52,4 +55,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('attendances', AttendanceController::class);
     Route::resource('faculties', FacultyController::class);
     Route::resource('shifts', ShiftController::class);
+});
+
+Route::group(['middleware' => ['auth', 'student']], function () {
+    Route::get('student_home', [StudentHomeController::class, 'index'])->name('student.home');
+});
+
+Route::group(['middleware' => ['auth', 'lecturer']], function () {
+    Route::get('student_home', [LecturerHomeController::class, 'index'])->name('student.home');
 });
