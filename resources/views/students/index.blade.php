@@ -43,7 +43,7 @@
                     <td>{{ $student->created_at }}</td>
                     <td>{{ $student->studentDetail->reg_no ?? '' }}</td>
                     <td>@if ($student->acceptance == 1)
-                        'accepted'
+                        accepted
                     @elseif($student->acceptance == 0)
                         Pending
                         @else
@@ -55,7 +55,7 @@
                          {!! Form::open(['method' => 'DELETE','route' => ['students.destroy', $student->id],'style'=>'display:inline']) !!}
                              {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                          {!! Form::close() !!}
-                         <a class="btn btn-info" href="{{ route('students.edit',$student->id) }}">Response</a>
+                         <a class="btn btn-info" href="{{ route('student.respond',$student->id) }}">Response</a>
 
                      </td>
                  </tr>

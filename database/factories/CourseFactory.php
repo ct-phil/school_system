@@ -21,7 +21,7 @@ class CourseFactory extends Factory
         return [
             //
             "name" => $this->faker->name,
-            "code" => $this->faker->word,
+            "code" => $this->faker->unique()->randomNumber(5, true),
             "description"=>$this->faker->sentence,
         ];
     }

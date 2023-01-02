@@ -7,6 +7,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\AcceptanceLetter;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class StudentController extends Controller
 { 
@@ -128,5 +131,26 @@ class StudentController extends Controller
     
         return redirect()->route('students.index')
                         ->with('success','Student deleted successfully');
+    }
+
+    public function respond($id){
+
+        $student = User::find($id);
+        return view('students.respond', compact('student'));
+    }
+
+    public function respondUpdate( Request $request, $id)
+    {
+        $student = User::find($id);
+        if($request->has('accept')){
+            $student->acceptance = $request->accept;
+            $student->update();
+
+            Mail::send(new AcceptanceLetter($student));
+
+        }
+       
+
+        return redirect()->route('students.index');
     }
 }

@@ -39,9 +39,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
-Route::get('/', function () {
-    Mail::send(new AcceptanceLetter());
-});
+// Route::get('/', function () {
+//     Mail::send(new AcceptanceLetter());
+// });
 
 Auth::routes();
 
@@ -56,6 +56,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UserController::class);
     Route::resource('courses', CourseController::class);
     Route::resource('students', StudentController::class);
+    Route::get('student_response/{id}', [StudentController::class, 'respond'])->name('student.respond');
+    Route::patch('student_response/{id}/update', [StudentController::class, 'respondUpdate'])->name('student.respond.update');
     Route::resource('lecturers', LecturerController::class);
     Route::resource('units', UnitController::class);
     Route::resource('batches', BatchController::class);

@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class AcceptanceLetter extends Mailable
 {
@@ -18,9 +19,11 @@ class AcceptanceLetter extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+    public $student;
+    public function __construct($student)
     {
-        //
+        $this->student = $student ;
     }
 
     /**
@@ -30,10 +33,12 @@ class AcceptanceLetter extends Mailable
      */
     public function envelope()
     {
+
+        Log::info($this->student);
         return new Envelope(
 
             from:'admin@gmail.com',
-            to:'customer@gmail.com',
+            to: $this->student->email,
             subject: 'Acceptance Letter',
         );
     }
