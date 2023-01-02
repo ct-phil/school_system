@@ -39,7 +39,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
-
+Route::get('/', function () {
+    Mail::send(new AcceptanceLetter());
+});
 
 Auth::routes();
 
@@ -47,9 +49,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/not_authorized', [App\Http\Controllers\NotAuthController::class, 'index'])->name('not_authorized');
 
 // Route::group(['middleware' => ['auth', 'admin']], function() {
-// Route::get('/', function () {
-//    Mail::send(new AcceptanceLetter());
-// });
+
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
