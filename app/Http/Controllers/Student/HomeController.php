@@ -9,7 +9,11 @@ class HomeController extends Controller
 {
     
     public function index(){
-        return view('student_home');
+
+        $applicatoinResponse = auth()->user()->course;
+        // dd($applicatoinResponse);
+        
+        return view('student_home',compact('applicatoinResponse'));
     }
     
 }

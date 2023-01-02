@@ -62,9 +62,9 @@ class User extends Authenticatable
         return $this->belongsTo(Batch::class, 'student_id');
     }
 
-    public function Course()
+    public function course()
     {
-        return $this->belongsTo(Course::class, 'student_id');
+        return $this->belongsTo(Course::class);
     }
 
    

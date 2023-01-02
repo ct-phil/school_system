@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                  Dear {{ auth()->user()->name }} Your course {{ $applicatoinResponse->name. ' - ' .$applicatoinResponse->code }} is {{ auth()->user()->acceptance ==1 ? 'accepted' : 'Still Pending' }}
                 </div>
             </div>
         </div>
