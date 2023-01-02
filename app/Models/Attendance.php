@@ -16,7 +16,6 @@ class Attendance extends Model
      */
     protected $fillable = [ 
         'name',
-             
 
     ];
 }

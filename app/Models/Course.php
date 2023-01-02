@@ -26,4 +26,11 @@ class Course extends Model
     {
         return $this->hasMany(Semester::class);
     }
+
+    public function students()
+    {
+        return $this->hasMany(User::class, 'student_id');
+    }
+
+
 }

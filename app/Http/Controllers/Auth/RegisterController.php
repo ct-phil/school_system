@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -41,6 +43,13 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        $courses = Course::all();
+
+        return view('auth.register', compact('courses'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -64,10 +73,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+
+        // dd($data);
+
+        $student = new User();
+
+        $student->name = $data['name'];
+        $student->email = $data['email'];
+        $student->password = Hash::make($data['password']);
+        $student->account_type = $data['account_type'];
+        $student->acceptance =$data['acceptance'];
+        $student->course_id = $data['course_id'];
+        $student->save();
+
+        return $student;
+
+    
+        // return User::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'password' => Hash::make($data['password']),
+        //     'account_type' => $data['account_type'],
+        //     'acceptance' => $data['acceptance'],
+        //     'course_id' => $data['course_id'],
+        // ]);
     }
 }
