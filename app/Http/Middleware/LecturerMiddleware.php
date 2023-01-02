@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LecturerMiddleware
 {
@@ -16,6 +17,12 @@ class LecturerMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (auth()->user()->account_type == 2) {
+            return $next($request);
+        }
+
+        return redirect('not_authorized')->with('error', "You don't have lecturer access.");
+
+        // return $next($request);
     }
 }

@@ -18,17 +18,11 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
 
-        if(Auth::check())
-        {
-            if (Auth::user()->account_type == 1) {
-                return redirect()->route('home');
-            } 
-            // elseif(Auth::user()->account_type == 2) {
-            //     return redirect()->route('home');
-            // }
-            
-        }
+    if (auth()->user()->account_type == 1) {
+            return $next($request);
+    }
 
-        return $next($request);
+        return redirect('not_authorized')->with('error', "You don't have admin access.");
+
     }
 }

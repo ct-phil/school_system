@@ -69,5 +69,5 @@ Route::group(['middleware' => ['auth', 'student']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'lecturer']], function () {
-    Route::get('student_home', [LecturerHomeController::class, 'index'])->name('student.home');
+    Route::get('lecturer_home', [LecturerHomeController::class, 'index'])->name('lecturer.home');
 });
